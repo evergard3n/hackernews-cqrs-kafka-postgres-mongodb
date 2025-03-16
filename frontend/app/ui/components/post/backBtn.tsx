@@ -7,7 +7,7 @@ export default function PostBackBtn() {
     return (
         <button
         onClick={() => router.back()}
-        className=" text-black hover:bg-zinc-100 w-8 h-8 rounded-full py-2 mb-4"
+        className=" text-black hover:bg-zinc-100 w-8 h-8 rounded-full py-2"
       >
         <ArrowLeftIcon width="15" height="15" className="mx-auto"/>
       </button>

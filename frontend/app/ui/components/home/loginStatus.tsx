@@ -26,7 +26,6 @@ export default function LogInStatus() {
       {
         user && (
             <div className="flex flex-row gap-4 items-center ">
-                <UserIcon/>
                 <div className="flex flex-col items-start">  
                     <p className="text-sm">Logged in as:</p>
                     <p className="font-bold text-lg">@{user.username}</p>

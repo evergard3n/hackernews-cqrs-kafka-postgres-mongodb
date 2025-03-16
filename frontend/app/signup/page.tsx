@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 export default function SignUpPage() {
     return (
-        <div className="w-1/4">
+        <div className="w-3/4 lg:w-1/4">
             <SignUpForm/>
         </div>
     )

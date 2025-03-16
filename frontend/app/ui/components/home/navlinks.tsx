@@ -1,29 +1,35 @@
-'use client'
+"use client";
 import {
-    MagnifyingGlassIcon,
-    UserCircleIcon,
+  MagnifyingGlassIcon,
+  UserCircleIcon,
   DocumentDuplicateIcon,
-} from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
+  HomeIcon
+} from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-    {
-        name: "Explore",
-        icon: MagnifyingGlassIcon,
-        href: "/explore",
-      },
-      {
-        name: "Account",
-        icon: UserCircleIcon,
-        href: "/account",
-      },
+  {
+    name: "Home",
+    icon: HomeIcon,
+    href: "/home",
+  },
+  {
+    name: "Explore",
+    icon: MagnifyingGlassIcon,
+    href: "/search",
+  },
+  {
+    name: "Account",
+    icon: UserCircleIcon,
+    href: "/account",
+  },
 ];
 
 export default function NavLinks() {
-  const pathName = usePathname()
+  const pathName = usePathname();
   return (
     <>
       {links.map((link) => {
@@ -33,11 +39,11 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              'flex h-[48px] grow items-center justify-center gap-2 rounded-md hover:bg-gray-200 p-3 text-sm font-medium  md:flex-none md:justify-start md:p-2 md:px-3 transition-colors duration-300 ease-in-out',
+              "flex h-[48px] grow items-center justify-center gap-2 rounded-md hover:bg-gray-200 p-3 text-sm font-medium  md:flex-none md:justify-start md:p-2 md:px-3 transition-colors duration-300 ease-in-out",
               {
-                'bg-sky-100 text-blue-600' : pathName == link.href
+                "bg-gray-200 ": pathName == link.href,
               }
-        )}
+            )}
           >
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>

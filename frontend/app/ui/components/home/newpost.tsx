@@ -19,8 +19,8 @@ export default function NewPost() {
   };
   return (
     
-    <div className="bg-white p-4 rounded-lg w-1/2 flex flex-row items-center gap-4">
-      <UserIcon />
+    <div className="bg-white p-4 rounded-lg w-full md:w-1/2 flex flex-row items-center gap-4">
+      {/* <UserIcon /> */}
       
 <input
         type="text"

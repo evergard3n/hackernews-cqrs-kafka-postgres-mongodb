@@ -1,15 +1,23 @@
 export default interface User {
   username: string;
-  email: string;
-  password: string;
-  id: number;
-  avatar: string;
+  id: string;
+  display_name: string;
 }
 
 export interface Post {
-  author: string;
-  title: string;
+  author: User;
+  content: string;
+  id: string;
+  created_at: string;
+  tags: Tags;
+  comment_count: number;
+}
+export interface Comment {
+  id: string;
+  author: User;
   content: string;
   post_id: string;
-  timestamp: string;
+  timestamps: string;
 }
+
+export type Tags = string[]

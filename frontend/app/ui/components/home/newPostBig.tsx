@@ -12,29 +12,40 @@ function TextArea() {
     toast.warning("You have to login first!");
     redirect("/login");
   }
-  const createPostWithUser = createPost.bind(null, user.username);
+  const token = localStorage.getItem("token") || ""
+  const createPostWithUser = createPost.bind(null, token);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const titleInput = document.querySelector<HTMLInputElement>("#title");
-    if (!titleInput || !titleInput.value.trim()) {
-      toast.error("Title cannot be empty!");
-      return;
+   const formData = new FormData(event.currentTarget)
+    const {title, content, tags} = {
+      title: formData.get("title"),
+      content: formData.get("content"),
+      tags: formData.get("tags") as string
     }
-    const formData = new FormData(event.currentTarget);
+    const tagsList = tags.split(",")
     try {
-      await createPost(user.username, formData);
-      toast.success("Post created successfully!");
-
+      const response = await fetch("http://localhost:3001/api/post/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({title, content, tagsList}),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Some error happened and I dont know why.");
+      }
+      
     } catch (error) {
-      toast.error("Failed to create post. Please try again.");
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch post.");
     }
+    
   };
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <form action={createPostWithUser}>
-        <div className="flex flex-col border border-zinc-200 h-fit p-2 rounded-lg focus:border-zinc-300">
+      <form action={createPostWithUser} className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 border border-zinc-200 h-fit p-2 rounded-lg focus:border-zinc-300">
           <label htmlFor="title">
             Title<span className="text-red-500">*</span>
           </label>
@@ -53,6 +64,8 @@ function TextArea() {
           className="resize-none focus:outline-none h-32 w-full border border-zinc-200 p-2 rounded-lg"
           placeholder="Body"
         ></textarea>
+        <label htmlFor="tags">Tags (separated by a comma)</label>
+        <input type="text" id="tags" name="tags" className="h-10 focus:outline-none border border-zinc-200 p-2 rounded-lg" placeholder="Tags.."/>
         <div className="flex flex-row justify-end">
           <button
             type="submit"
@@ -69,7 +82,7 @@ function TextArea() {
 
 export default function NewPostBig() {
   return (
-    <div className="absolute bg-white w-1/2 top-0 left-0 right-0 bottom-0 m-auto h-1/2 rounded-lg shadow-lg flex flex-col z-20">
+    <div className="absolute bg-white w-1/2 top-0 left-0 right-0 bottom-0 m-auto h-fit rounded-lg shadow-lg flex flex-col z-20">
       <div className="w-full h-16 flex flex-row items-center p-4 border-b border-zinc-200">
         <h1 className="font-bold grow text-center">Create new post</h1>
         <Link href={'/home'}>
