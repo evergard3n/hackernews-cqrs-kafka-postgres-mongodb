@@ -1,4 +1,6 @@
 # Hackernews Clone
+## Disclaimer
+
 
 ## Setup
 
