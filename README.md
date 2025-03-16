@@ -1,5 +1,10 @@
 # Hackernews Clone
 
+## Disclaimer 
+
+This is a fork of the original project, serving the purpose of improvising the UI. For the sake of simplicity, I created a lightweight Fastify server to replace the original chunky set up.
+
+
 ## Setup
 
 - Create Docker networks
