@@ -9,7 +9,14 @@ export const UpdatePost = Type.Partial(CreatePost)
 
 export const Post = Type.Intersect([
     Type.Object({
-        id: Type.Number()
+        id: Type.Number(),
+        author: Type.Object({
+            id: Type.String(),
+            display_name: Type.String(),
+            username: Type.String()
+        }),
+        createdAt: Type.String(),
+        updatedAt: Type.String(),
     }),
     CreatePost
 ])

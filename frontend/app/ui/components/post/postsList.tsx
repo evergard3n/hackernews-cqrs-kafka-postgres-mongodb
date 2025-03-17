@@ -8,7 +8,7 @@ export default async function PostsList() {
   const token = (await cookies()).get("token")?.value || "";
   const fetchedPosts: Post[] = await getAllPost({token:token})
   const sortedPosts = fetchedPosts.sort((a, b) =>
-    compareDesc(new Date(a.created_at), new Date(b.created_at))
+    compareDesc(new Date(a.createdAt), new Date(b.createdAt))
   );
   return (
     <div className="flex flex-col gap-4 mt-8">

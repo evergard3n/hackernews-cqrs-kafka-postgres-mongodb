@@ -15,8 +15,13 @@ const route: FastifyPluginAsyncTypebox = async (app) => {
         const post: Post = {
             id: db.posts.length + 1,
             content: postContent.content,
-            createdAt: new Date(),
-            updatedAt: new Date()
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            author: {
+                id: '1',
+                display_name: 'John Doe',
+                username: 'johndoe'
+            }
         }
         db.posts.push(post);
         reply.status(201);

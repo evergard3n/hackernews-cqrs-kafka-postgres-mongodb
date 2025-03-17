@@ -8,7 +8,7 @@ export interface Post {
   author: User;
   content: string;
   id: string;
-  created_at: string;
+  createdAt: string;
   tags: Tags;
   comment_count: number;
 }

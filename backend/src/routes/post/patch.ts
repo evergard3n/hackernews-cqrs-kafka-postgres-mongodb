@@ -20,7 +20,7 @@ const route: FastifyPluginAsyncTypebox = async (app) => {
         const updatedPost = {
             ...post,
             ...request.body,
-            updatedAt: new Date(),
+            updatedAt: new Date().toISOString(),
             id: postId,
         }
         db.posts = db.posts.map(post => post.id === postId ? updatedPost : post);

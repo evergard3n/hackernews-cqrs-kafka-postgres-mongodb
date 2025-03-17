@@ -37,11 +37,11 @@ export default async function PostThumbnail({ post }: { post: Post }) {
 
           <p className="text-sm">
             {`Posted by ${post.author.display_name} ${formatDistance(
-              new Date(post.created_at),
+              new Date(post.createdAt),
               new Date()
             )} ago - ${numberOfComments} comments`}
           </p>
-          <TagsList tags={post.tags} />
+          {/* <TagsList tags={post.tags} /> */}
         </div>
       </div>
     </Link>
