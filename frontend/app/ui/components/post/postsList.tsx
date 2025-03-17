@@ -11,7 +11,7 @@ export default async function PostsList() {
     compareDesc(new Date(a.createdAt), new Date(b.createdAt))
   );
   return (
-    <div className="flex flex-col gap-4 mt-8">
+    <div className="flex flex-col w-full gap-4 mt-8">
       {sortedPosts.map((post) => (
         <li key={post.id} className="list-none">
           <PostThumbnail key={post.id} post={post} />

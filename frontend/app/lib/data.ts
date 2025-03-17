@@ -3,7 +3,7 @@ import User, { Comment, Post, Tags } from "./definitions";
 export async function getPostById({ id, token }: { id: string , token: string }) {
   try {
     // const token = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:3000/api/post/${id}/`, {
+    const response = await fetch(`http://localhost:3000/api/post/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -20,7 +20,7 @@ export async function getPostById({ id, token }: { id: string , token: string })
       comment_count,
       created_at,
     }: {
-      post_id: string;
+      post_id: number;
       author: User;
       content: string;
       tags: Tags;
