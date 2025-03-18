@@ -11,17 +11,16 @@ const route: FastifyPluginAsyncTypebox = async (app) => {
             }
         }
     }, async (request,reply) => {
-        const postContent = request.body;
+        const postContent = request.body.content;
+        const author = request.body.author;
         const post: Post = {
             id: db.posts.length + 1,
-            content: postContent.content,
+            content: postContent,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
-            author: {
-                id: '1',
-                display_name: 'John Doe',
-                username: 'johndoe'
-            }
+            // TODO: do something with this author
+            author: author,
+            comment_count: 0
         }
         db.posts.push(post);
         reply.status(201);
