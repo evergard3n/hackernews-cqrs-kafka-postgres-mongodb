@@ -94,12 +94,27 @@ export async function getAllCommentByPostId({ post_id, token }: { post_id: strin
       }
     });
     if (!response.ok) {
-      throw new Error(`Cant fetch all comment.`);
+      throw new Error(`Cant fetch all comment of post ${post_id}.`);
     }
     const res = await response.json();
     return res;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch post.");
+  }
+}
+
+export async function getRecentComments() {
+  try {
+    const response = await fetch('http://localhost:3000/api/post/comment') 
+    if(!response.ok) {
+      throw new Error(`Cant fetch all comment.`);
+    }
+    const res = await response.json();
+    return res;
+  } catch (error) {
+    console.error("Database Error: ", error);
+    throw new Error("Failed to fetch post")
+    
   }
 }

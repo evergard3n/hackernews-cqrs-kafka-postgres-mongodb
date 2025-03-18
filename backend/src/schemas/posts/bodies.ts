@@ -31,6 +31,7 @@ export const Post = Type.Intersect([
     }),
     createdAt: Type.String(),
     updatedAt: Type.String(),
+    comment_count: Type.Number(),
   }),
   CreatePost,
 ]);

@@ -14,15 +14,13 @@ export default function NewPost() {
       toast.warning("You have to login first!");
       redirect("/login");
     }
-    redirect('/posts/create');
-    
+    redirect("/posts/create");
   };
   return (
-    
-    <div className="bg-white p-4 rounded-lg w-full md:w-1/2 flex flex-row items-center gap-4">
+    <div className="bg-white p-4 md:mx-14 rounded-lg w-full md:w-1/2 flex flex-row items-center gap-4">
       {/* <UserIcon /> */}
-      
-<input
+
+      <input
         type="text"
         disabled={open}
         className="bg-zinc-100 h-10 rounded-full focus:border-0 w-full px-4"

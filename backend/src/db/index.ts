@@ -4,6 +4,7 @@ export type Post = {
   author: Author;
   createdAt: string;
   updatedAt: string;
+  comment_count: number;
 };
 
 export type Author = {
@@ -31,6 +32,7 @@ const posts: Post[] = [
       display_name: "John Doe",
       username: "johndoe",
     },
+    comment_count: 2
   },
   {
     id: 2,
@@ -42,6 +44,7 @@ const posts: Post[] = [
       display_name: "John Doe",
       username: "johndoe",
     },
+    comment_count: 5
   },
 ];
 

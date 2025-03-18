@@ -16,7 +16,7 @@ export default async function SearchPage(props: {
     const query = searchParams?.query || '';
     const fetchedPost = (await getAllPost({ token: "" })) as Post[];
     return (
-        <div>
+        <div className="">
             <SearchBar/>
             <SearchResults allPost={fetchedPost} query = {query}/>
         </div>
